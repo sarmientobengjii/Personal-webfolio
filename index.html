@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Harvy Sarmiento Webfolio</title>
+    <title>Harvy Sarmiento - Portfolio</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
@@ -12,7 +12,7 @@
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <a href="#home">Webfolio</a>
+                <a href="#home">Portfolio</a>
             </div>
             <ul class="nav-menu" id="nav-menu">
                 <li class="nav-item">
@@ -38,7 +38,6 @@
         </div>
     </nav>
 
-    <!-- Home Section -->
     <section id="home" class="hero">
         <div class="hero-content">
             <div class="hero-text">
@@ -56,7 +55,9 @@
             </div>
             <div class="hero-image fade-in-delay">
                 <div class="profile-container">
-                    <img src="avatar.jpg" alt="Harvy Sarmiento" class="profile-img">
+                    <img src="avatar.jpg" alt="Harvy Sarmiento Light Mode" class="profile-img light-mode-img">
+                    <img src="gising-pa-ya.jpeg" alt="Harvy Sarmiento Dark Mode" class="profile-img dark-mode-img default">
+                    <img src="orlok-na.jpeg" alt="Harvy Sarmiento Dark Mode Hover" class="profile-img dark-mode-img hover">
                 </div>
             </div>
         </div>
@@ -65,37 +66,39 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
     <section id="projects" class="projects">
         <div class="container">
             <h2 class="section-title">My Projects</h2>
             <div class="projects-grid">
                 <div class="project-card" data-aos="fade-up">
                     <div class="project-image">
-                        <img src="ecommerce-mock.png" alt="Luxe">
+
+                        <img src="ecommerce-mock.png" alt="Luxe" class="project-screenshot">
                         <div class="project-overlay">
                             <div class="project-links">
-                                <a href="https://sarmientobengjii.github.io/" class="project-link" target="_blank" aria-label="View Project">
+                                <a href="https://sarmientobengjii.github.io" class="project-link" target="_blank" aria-label="View Live Demo">
                                     <i class="fas fa-external-link-alt"></i>
                                 </a>
-                                <a href="#" class="project-link" target="_blank" aria-label="View Code">
+                                <a href="https://github.com/sarmientobengjii" class="project-link" target="_blank" aria-label="View Source Code">
                                     <i class="fab fa-github"></i>
                                 </a>
                             </div>
                         </div>
                     </div>
                     <div class="project-content">
-                        <h3 class="project-title">E-Commerce Website</h3>
+                        <h3 class="project-title">TechStore - E-commerce Platform</h3>
                         <p class="project-description">
-                            A fully responsive e-commerce platform built with modern web technologies.
-                            Features include product catalog, shopping cart, and payment integration.
+                            A modern, fully responsive e-commerce website featuring product catalog, 
+                            shopping cart functionality, user authentication, payment integration, 
+                            and administrative dashboard for inventory management.
                         </p>
                         <div class="project-tech">
-                            <span class="tech-tag">HTML</span>
-                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
                             <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">NodeJS</span>
-                            <span class="tech-tag">ReactJS</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">MongoDB</span>
                             <span class="tech-tag">ExpressJS</span>
                         </div>
                     </div>
@@ -136,7 +139,6 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
             <h2 class="section-title">Get In Touch</h2>
@@ -189,14 +191,12 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <p>&copy; 2024 Harvy Sarmiento. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- Success Modal -->
     <div id="success-modal" class="modal">
         <div class="modal-content">
             <span class="close" id="close-modal">&times;</span>
