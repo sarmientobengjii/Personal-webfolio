@@ -290,7 +290,6 @@ window.addEventListener('load', () => {
     document.body.classList.add('loaded');
 });
 
-// Initialize GitHub repos (uncomment and add your username to enable)
 fetchGitHubRepos('sarmientobengjii');
 
 console.log('Portfolio website loaded successfully! 🚀');

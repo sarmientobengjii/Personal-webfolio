@@ -543,6 +543,11 @@ body {
 
 .project-content {
     padding: 2rem;
+    background-color: inherit;
+}
+
+[data-theme="dark"] .project-content {
+    background-color: #1a1a1a;
 }
 
 .project-title {
@@ -573,13 +578,29 @@ body {
     border-radius: 15px;
     font-size: 0.8rem;
     font-weight: 500;
+    transition: var(--transition);
 }
 
-/* Project Features */
+[data-theme="dark"] .tech-tag {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    border: 1px solid #34495e;
+}
+
+[data-theme="dark"] .tech-tag:hover {
+    background-color: #34495e;
+    border-color: #4a90e2;
+}
+
+/* Project Features - Dark Mode Enhancement */
 .project-features {
     margin-top: 1.5rem;
     padding-top: 1rem;
     border-top: 1px solid var(--border-color);
+}
+
+[data-theme="dark"] .project-features {
+    border-top: 1px solid #333;
 }
 
 .project-features h4 {
@@ -587,6 +608,10 @@ body {
     font-size: 1rem;
     margin-bottom: 0.8rem;
     font-weight: 600;
+}
+
+[data-theme="dark"] .project-features h4 {
+    color: #ecf0f1;
 }
 
 .project-features ul {
@@ -605,9 +630,17 @@ body {
     gap: 0.5rem;
 }
 
+[data-theme="dark"] .project-features li {
+    color: #bdc3c7;
+}
+
 .project-features li i {
     color: #27ae60;
     font-size: 0.8rem;
+}
+
+[data-theme="dark"] .project-features li i {
+    color: #2ecc71;
 }
 
 /* Contact Section - Enhanced Visibility */
@@ -954,6 +987,41 @@ body {
     display: flex;
     align-items: center;
     gap: 0.3rem;
+}
+
+/* GitHub Error Message Styling */
+.github-error {
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--bg-light);
+    border-radius: 15px;
+    grid-column: 1 / -1;
+    border: 1px solid var(--border-color);
+}
+
+[data-theme="dark"] .github-error {
+    background-color: #1a1a1a;
+    border-color: #333;
+}
+
+.github-error p {
+    color: var(--text-light);
+    margin-bottom: 1rem;
+}
+
+.github-error a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--primary-color);
+    border-radius: 25px;
+    transition: var(--transition);
+}
+
+.github-error a:hover {
+    background-color: var(--primary-color);
+    color: white;
 }
 
 .github-stars i,
