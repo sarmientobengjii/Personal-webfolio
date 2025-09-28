@@ -1,4 +1,3 @@
-/* Reset and Base Styles */
 * {
     margin: 0;
     padding: 0;
@@ -8,8 +7,8 @@
 :root {
     --primary-color: #4a90e2;
     --secondary-color: #f39c12;
-    --text-color: #333;
-    --text-light: #666;
+    --text-color: #2c3e50;
+    --text-light: #5a6c7d;
     --bg-color: #ffffff;
     --bg-light: #f8f9fa;
     --border-color: #e9ecef;
@@ -20,8 +19,8 @@
 }
 
 [data-theme="dark"] {
-    --text-color: #ffffff;
-    --text-light: #b0b0b0;
+    --text-color: #ecf0f1;
+    --text-light: #bdc3c7;
     --bg-color: #1a1a1a;
     --bg-light: #2d2d2d;
     --border-color: #404040;
@@ -39,12 +38,7 @@ body {
     color: var(--text-color);
     background-color: var(--bg-color);
     transition: var(--transition);
-    opacity: 0;
-}
-
-body.loaded {
     opacity: 1;
-    transition: opacity 0.5s ease-in-out;
 }
 
 .container {
@@ -53,7 +47,7 @@ body.loaded {
     padding: 0 20px;
 }
 
-/* Navigation */
+/* Navigation - Enhanced Contrast */
 .navbar {
     position: fixed;
     top: 0;
@@ -68,6 +62,7 @@ body.loaded {
 
 [data-theme="dark"] .navbar {
     background-color: rgba(26, 26, 26, 0.95);
+    border-bottom: 1px solid #404040;
 }
 
 .nav-container {
@@ -81,10 +76,14 @@ body.loaded {
 }
 
 .nav-logo a {
-    font-size: 1.5rem;
-    font-weight: bold;
+    font-size: 1.8rem;
+    font-weight: 800;
     text-decoration: none;
     color: var(--primary-color);
+}
+
+[data-theme="dark"] .nav-logo a {
+    color: #3498db;
 }
 
 .nav-menu {
@@ -96,14 +95,24 @@ body.loaded {
 
 .nav-link {
     text-decoration: none;
-    color: var(--text-color);
-    font-weight: 500;
+    color: #2c3e50;
+    font-weight: 600;
+    font-size: 1rem;
     transition: var(--transition);
     position: relative;
+    padding: 0.5rem 0;
 }
 
 .nav-link:hover {
     color: var(--primary-color);
+}
+
+[data-theme="dark"] .nav-link {
+    color: #ecf0f1;
+}
+
+[data-theme="dark"] .nav-link:hover {
+    color: var(--secondary-color);
 }
 
 .nav-link::after {
@@ -152,6 +161,10 @@ body.loaded {
     background-color: var(--text-color);
     margin: 3px 0;
     transition: var(--transition);
+}
+
+[data-theme="dark"] .bar {
+    background-color: #ecf0f1;
 }
 
 /* Hero Section */
@@ -257,9 +270,14 @@ body.loaded {
     color: var(--primary-color);
 }
 
+/* Profile Images - Triple Image System */
 .profile-container {
     display: flex;
     justify-content: center;
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
 }
 
 .profile-img {
@@ -269,8 +287,55 @@ body.loaded {
     object-fit: cover;
     border: 5px solid rgba(255, 255, 255, 0.2);
     transition: var(--transition);
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
+/* Light Mode Image */
+.light-mode-img {
+    opacity: 1;
+    visibility: visible;
+    z-index: 3;
+}
+
+[data-theme="dark"] .light-mode-img {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Dark Mode Images */
+.dark-mode-img {
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1;
+}
+
+[data-theme="dark"] .dark-mode-img {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Default Dark Mode Image */
+.dark-mode-img.default {
+    z-index: 2;
+}
+
+/* Hover Dark Mode Image */
+.dark-mode-img.hover {
+    z-index: 3;
+    opacity: 0;
+}
+
+[data-theme="dark"] .profile-container:hover .dark-mode-img.default {
+    opacity: 0;
+}
+
+[data-theme="dark"] .profile-container:hover .dark-mode-img.hover {
+    opacity: 1;
+}
+
+/* Profile Image Hover Effects */
 .profile-img:hover {
     transform: scale(1.05);
     border-color: var(--secondary-color);
@@ -390,11 +455,15 @@ body.loaded {
     height: 250px;
 }
 
-.project-image img {
+.project-image img, .project-screenshot {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: var(--transition);
+}
+
+.project-card:hover .project-screenshot {
+    transform: scale(1.05);
 }
 
 .project-overlay {
@@ -445,18 +514,21 @@ body.loaded {
     font-size: 1.5rem;
     margin-bottom: 1rem;
     color: var(--text-color);
+    font-weight: 700;
 }
 
 .project-description {
     color: var(--text-light);
     margin-bottom: 1.5rem;
-    line-height: 1.6;
+    line-height: 1.7;
+    font-size: 0.95rem;
 }
 
 .project-tech {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
+    margin-bottom: 1rem;
 }
 
 .tech-tag {
@@ -468,68 +540,42 @@ body.loaded {
     font-weight: 500;
 }
 
-/* GitHub Projects Styles */
-.github-project-header {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    color: white;
-    text-align: center;
-    padding: 2rem;
+/* Project Features */
+.project-features {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
 }
 
-.github-project-header i {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-}
-
-.github-repo-name {
-    font-size: 1.2rem;
-    font-weight: bold;
-    text-transform: capitalize;
-}
-
-.github-section-title {
-    grid-column: 1 / -1;
-    text-align: center;
-    margin: 3rem 0 1rem;
-}
-
-.github-section-title h3 {
-    font-size: 1.8rem;
+.project-features h4 {
     color: var(--text-color);
-    margin-bottom: 1rem;
-    position: relative;
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+    font-weight: 600;
 }
 
-.github-section-title h3::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 2px;
-    background: var(--gradient);
-    border-radius: 2px;
+.project-features ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.5rem;
 }
 
-.github-stars,
-.github-forks {
-    background-color: var(--text-light) !important;
+.project-features li {
+    color: var(--text-light);
+    font-size: 0.9rem;
     display: flex;
     align-items: center;
-    gap: 0.3rem;
+    gap: 0.5rem;
 }
 
-.github-stars i,
-.github-forks i {
-    font-size: 0.7rem;
+.project-features li i {
+    color: #27ae60;
+    font-size: 0.8rem;
 }
 
-/* Contact Section */
+/* Contact Section - Enhanced Visibility */
 .contact {
     padding: 100px 0;
     background-color: var(--bg-color);
@@ -543,15 +589,17 @@ body.loaded {
 }
 
 .contact-info h3 {
-    font-size: 1.8rem;
+    font-size: 2rem;
     margin-bottom: 1rem;
     color: var(--text-color);
+    font-weight: 700;
 }
 
 .contact-info p {
     color: var(--text-light);
     margin-bottom: 2rem;
-    line-height: 1.6;
+    line-height: 1.7;
+    font-size: 1.1rem;
 }
 
 .contact-details {
@@ -562,36 +610,93 @@ body.loaded {
     display: flex;
     align-items: center;
     gap: 1rem;
-    margin-bottom: 1rem;
-    color: var(--text-color);
+    margin-bottom: 1.2rem;
+    color: #2c3e50;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+[data-theme="dark"] .contact-item {
+    color: #ecf0f1;
 }
 
 .contact-item i {
-    width: 20px;
-    color: var(--primary-color);
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #3498db;
+    font-size: 1.1rem;
+    transition: var(--transition);
 }
 
+[data-theme="dark"] .contact-item i {
+    color: #5dade2;
+}
+
+/* Social Media Icons - Enhanced */
 .social-links {
     display: flex;
-    gap: 1rem;
+    gap: 1.2rem;
+    margin-top: 1.5rem;
 }
 
 .social-link {
     width: 50px;
     height: 50px;
-    background-color: var(--primary-color);
-    color: white;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     text-decoration: none;
     transition: var(--transition);
+    font-size: 1.2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
 
 .social-link:hover {
-    background-color: var(--secondary-color);
     transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+}
+
+/* GitHub */
+.social-link[aria-label="GitHub"] {
+    background-color: #333;
+    color: white;
+}
+
+.social-link[aria-label="GitHub"]:hover {
+    background-color: #000;
+}
+
+[data-theme="dark"] .social-link[aria-label="GitHub"] {
+    background-color: #4a4a4a;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+[data-theme="dark"] .social-link[aria-label="GitHub"]:hover {
+    background-color: #666;
+}
+
+/* LinkedIn */
+.social-link[aria-label="LinkedIn"] {
+    background-color: #0077b5;
+    color: white;
+}
+
+.social-link[aria-label="LinkedIn"]:hover {
+    background-color: #005885;
+}
+
+/* Facebook */
+.social-link[aria-label="Facebook"] {
+    background-color: #1877f2;
+    color: white;
+}
+
+.social-link[aria-label="Facebook"]:hover {
+    background-color: #166fe5;
 }
 
 .contact-form {
@@ -756,8 +861,69 @@ body.loaded {
 }
 
 .scroll-to-top:hover {
-    transform: scale(1.1) !important;
-    box-shadow: var(--shadow-hover) !important;
+    transform: scale(1.1);
+    box-shadow: var(--shadow-hover);
+}
+
+/* GitHub Projects Styles */
+.github-project-header {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+}
+
+.github-project-header i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.github-repo-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.github-section-title {
+    grid-column: 1 / -1;
+    text-align: center;
+    margin: 3rem 0 1rem;
+}
+
+.github-section-title h3 {
+    font-size: 1.8rem;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.github-section-title h3::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 2px;
+    background: var(--gradient);
+    border-radius: 2px;
+}
+
+.github-stars,
+.github-forks {
+    background-color: var(--text-light) !important;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.github-stars i,
+.github-forks i {
+    font-size: 0.7rem;
 }
 
 /* Responsive Design */
@@ -774,6 +940,7 @@ body.loaded {
         box-shadow: var(--shadow);
         padding: 2rem 0;
         gap: 1rem;
+        border-top: 1px solid var(--border-color);
     }
 
     .nav-menu.active {
@@ -822,6 +989,24 @@ body.loaded {
     .section-title {
         font-size: 2rem;
     }
+
+    .project-features ul {
+        grid-template-columns: 1fr;
+    }
+    
+    .project-features li {
+        font-size: 0.85rem;
+    }
+
+    .profile-container {
+        width: 250px;
+        height: 250px;
+    }
+
+    .profile-img {
+        width: 250px;
+        height: 250px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -846,9 +1031,14 @@ body.loaded {
         font-size: 0.9rem;
     }
 
+    .profile-container {
+        width: 220px;
+        height: 220px;
+    }
+
     .profile-img {
-        width: 250px;
-        height: 250px;
+        width: 220px;
+        height: 220px;
     }
 
     .projects,
